@@ -416,11 +416,6 @@ export async function loadConfig(): Promise<WorkspaceConfig> {
       if (p.enabled === undefined) (p as any).enabled = true
     }
   }
-  if ((parsed as any).buc && !parsed.providerConfig?.code) {
-    parsed.providerConfig = parsed.providerConfig ?? {}
-    parsed.providerConfig.code = { buc: (parsed as any).buc }
-    delete (parsed as any).buc
-  }
   cachedWorkspace = parsed
   cachedWorkspaceMtimeMs = mtimeMs
   return cachedWorkspace
